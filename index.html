@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voxora | Coming Soon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #0f0f12;
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --text-color: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 600px;
+        }
+
+        .logo-container img {
+            width: 200px; /* Adjust size as needed */
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.3));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+            margin: 20px 0 10px 0;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        p.tagline {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .status-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 40px;
+            color: var(--accent-blue);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff0055, #ff4d00);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 0, 85, 0.3);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            font-size: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            transition: color 0.3s, transform 0.3s;
+            opacity: 0.7;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-blue);
+            transform: scale(1.2);
+            opacity: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Voxora Logo">
+        </div>
+
+        <h1>Voxora</h1>
+        <p class="tagline">The next dimension of gaming is arriving.</p>
+        
+        <div class="status-badge">
+            <i class="fas fa-rocket"></i> Launching Soon
+        </div>
+
+        <br>
+        
+
+        <div class="social-links">
+            <a href="https://www.youtube.com/@Voxora_studio"><i class="fab fa-youtube"></i></a>
+            <a href="https://discord.gg/TUmHvQCT" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
+        </div>
+    </div>
+
+</body>
+</html>
