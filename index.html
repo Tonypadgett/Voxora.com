@@ -3,136 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voxora | Coming Soon</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Nexus Gaming | Dashboard</title>
     <style>
         :root {
-            --primary-bg: #0f0f12;
-            --accent-blue: #00d2ff;
-            --accent-purple: #9d50bb;
-            --text-color: #ffffff;
+            --bg-dark: #0f1014;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --accent-color: #00f2ff;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
         }
 
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--text-color);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
             overflow: hidden;
         }
 
-        .container {
-            text-align: center;
-            padding: 20px;
-            max-width: 600px;
+        /* --- Sidebar Navigation --- */
+        nav {
+            width: 80px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .logo-container img {
-            width: 200px; /* Adjust size as needed */
-            height: auto;
-            filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.3));
-            animation: float 4s ease-in-out infinite;
+        .logo {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 24px;
+            margin-bottom: 50px;
         }
 
-        h1 {
-            font-size: 3.5rem;
-            letter-spacing: 4px;
-            margin: 20px 0 10px 0;
-            text-transform: uppercase;
-            font-weight: 800;
+        .nav-icon {
+            margin: 20px 0;
+            cursor: pointer;
+            font-size: 20px;
+            opacity: 0.6;
+            transition: 0.3s;
         }
 
-        p.tagline {
-            font-size: 1.2rem;
-            color: #aaa;
+        .nav-icon:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        /* --- Main Content Area --- */
+        main {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            background: radial-gradient(circle at top right, #1a1c24, #0f1014);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 30px;
         }
 
-        .status-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 40px;
-            color: var(--accent-blue);
+        .search-bar {
+            background: var(--card-bg);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: white;
+            width: 300px;
         }
 
-        .cta-button {
-            background: linear-gradient(45deg, #ff0055, #ff4d00);
-            color: white;
+        /* --- Hero Section --- */
+        .hero {
+            height: 350px;
+            border-radius: 20px;
+            background: linear-gradient(to right, rgba(0,0,0,0.8), transparent), 
+                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero h1 { font-size: 48px; margin: 0; }
+        .hero p { color: var(--text-dim); margin: 10px 0 25px; max-width: 400px; }
+
+        .btn-play {
+            background: var(--accent-color);
+            color: black;
+            border: none;
             padding: 12px 30px;
             border-radius: 8px;
-            text-decoration: none;
             font-weight: bold;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: inline-block;
-            margin-bottom: 40px;
+            cursor: pointer;
+            width: fit-content;
+            transition: transform 0.2s;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 0, 85, 0.3);
+        .btn-play:hover { transform: scale(1.05); }
+
+        /* --- Game Grid --- */
+        .section-title { font-size: 18px; margin-bottom: 20px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            font-size: 1.5rem;
+        .game-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+            cursor: pointer;
+            border: 1px solid transparent;
         }
 
-        .social-links a {
-            color: white;
-            transition: color 0.3s, transform 0.3s;
-            opacity: 0.7;
+        .game-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        .social-links a:hover {
-            color: var(--accent-blue);
-            transform: scale(1.2);
-            opacity: 1;
+        .game-img {
+            height: 120px;
+            background: #333;
+            background-size: cover;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        .game-info {
+            padding: 15px;
         }
 
-        /* Responsive */
-        @media (max-width: 480px) {
-            h1 { font-size: 2.5rem; }
-        }
+        .game-info h3 { margin: 0; font-size: 16px; }
+        .game-info span { font-size: 12px; color: var(--text-dim); }
+
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="logo-container">
-            <img src="logo.jpg" alt="Voxora Logo">
-        </div>
+    <nav>
+        <div class="logo">N</div>
+        <div class="nav-icon">🏠</div>
+        <div class="nav-icon">🛒</div>
+        <div class="nav-icon">👥</div>
+        <div class="nav-icon">⚙️</div>
+    </nav>
 
-        <h1>Voxora</h1>
-        <p class="tagline">The next dimension of gaming is arriving.</p>
-        
-        <div class="status-badge">
-            <i class="fas fa-rocket"></i> Launching Soon
-        </div>
+    <main>
+        <header>
+            <input type="text" class="search-bar" placeholder="Search games, friends, or news...">
+            <div class="user-profile">
+                <span>Welcome back, <strong>Player1</strong></span>
+            </div>
+        </header>
 
-        <br>
-        
+        <section class="hero">
+            <h1>Cyber Protocol</h1>
+            <p>Dive back into the neon streets. The latest expansion "Neural Link" is now live.</p>
+            <button class="btn-play">RESUME GAME</button>
+        </section>
 
-        <div class="social-links">
-            <a href="https://www.youtube.com/@Voxora_studio"><i class="fab fa-youtube"></i></a>
-            <a href="https://discord.gg/TUmHvQCT" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
-        </div>
-    </div>
+        <div class="section-title">Jump Back In</div>
+        <section class="game-grid">
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=400&q=60');"></div>
+                <div class="game-info">
+                    <h3>Retro Racer</h3>
+                    <span>Played 2h ago</span>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=400&q=60');"></div>
+                <div class="game-info">
+                    <h3>Forest Quest</h3>
+                    <span>85% Complete</span>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://images.unsplash.com/photo-1614027164847-1b2809eb1895?auto=format&fit=crop&w=400&q=60');"></div>
+                <div class="game-info">
+                    <h3>Space Void</h3>
+                    <span>New Update Available</span>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-img" style="background-image: url('https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?auto=format&fit=crop&w=400&q=60');"></div>
+                <div class="game-info">
+                    <h3>Arena Pro</h3>
+                    <span>Season 4 starts soon</span>
+                </div>
+            </div>
+        </section>
+    </main>
 
 </body>
 </html>
